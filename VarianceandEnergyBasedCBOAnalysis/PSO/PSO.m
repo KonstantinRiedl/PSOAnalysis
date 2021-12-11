@@ -12,7 +12,7 @@
 %               - dt           = time step size
 %               - N            = number of particles
 %               - m            = inertia weight
-%               - kappa        = 
+%               - kappa        = scaling parameter (usually 1/dt)
 %               - gamma        = friction coefficient
 %               - lambda1      = drift towards in-time best parameter
 %               - lambda2      = drift towards global and in-time best parameter
@@ -25,10 +25,10 @@
 %           X0                 = initial positions of the particles
 %           V0                 = initial velocities of the particles
 %           
-% output:   xstar_approx       = approximation to xstar
+% output:   ystar_approx       = approximation to ystar
 %
 
-function [xstar_approx] = PSO(E, parametersPSO, X0, V0)
+function [ystar_approx] = PSO(E, parametersPSO, X0, V0)
 
 % get parameters
 T = parametersPSO('T');
@@ -64,7 +64,7 @@ for k = 1:T/dt
 end
 
 y_alpha = compute_yalpha(E, alpha, Y);
-xstar_approx = y_alpha;
+ystar_approx = y_alpha;
 
 clear E parametersPSO X0 V0
 clear T dt anisotropic1 anisotropic2 alpha

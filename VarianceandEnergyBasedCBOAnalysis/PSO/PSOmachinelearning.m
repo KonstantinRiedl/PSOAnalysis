@@ -1,3 +1,40 @@
+% Particle swarm optimization for Machine Learning (PSO)
+%
+% This function performs PSO for machine learning applications.
+% 
+% 
+% [ystar_approx, performance_tracking] = PSOmachinelearning(parametersPSO, parametersbatch, parametersInitialization, train_data, train_label, test_data, test_label, image_size, NN_architecture, worker)
+% 
+% input:    E                        = objective function E (as anonymous function)
+%           parametersPSO            = suitable parameters for PSO
+%                                    = [T, dt, N, m, kappa, gamma, lambda1, lambda2, sigma1, anisotropic, sigma2, alpha, beta]
+%               - T                  = time horizon
+%               - dt                 = time step size
+%               - N                  = number of particles
+%               - m                  = inertia weight
+%               - kappa              = scaling parameter (usually 1/dt)
+%               - gamma              = friction coefficient
+%               - lambda1            = drift towards in-time best parameter
+%               - lambda2            = drift towards global and in-time best parameter
+%               - anisotropic1       = noise 1 type
+%               - sigma1             = noise parameter 1
+%               - anisotropic2       = noise 2 type
+%               - sigma2             = noise parameter 2
+%               - alpha              = weight/temperature parameter
+%               - beta               = regularization parameter for sigmoid
+%           parametersbatch          = suitable batch sizes for PSO
+%                                    = [batch_size_N, batch_size_E, full_or_partial_XYV_update]
+%           parametersInitialization = suitable initializaiton for PSO
+%                                    = [X0mean, X0std, V0mean, V0std]
+%           train_data, train_label, test_data, test_label, image_size = training and testing data
+%           NN_architecture          = architecture of NN
+%           X0                       = initial positions of the particles
+%           V0                       = initial velocities of the particles
+%           
+% output:   ystar_approx             = approximation to ystar
+%           performance_tracking     = saved performance metrics of training porcess
+%
+
 function [ystar_approx, performance_tracking] = PSOmachinelearning(parametersPSO, parametersbatch, parametersInitialization, train_data, train_label, test_data, test_label, image_size, NN_architecture, worker)
 
 % get parameters
@@ -101,7 +138,7 @@ for epoch = 1:epochs
                 V(:,indices_p_b) = V_particle_batch;
                 clear permutation
             elseif strcmp(full_or_partial_XYV_update, 'full')
-                [X, Y, V, objective_function_Y] = PSO_update(E_train_batch, parametersPSO, yalpha_on_batch, X, Y, V, objective_function_Y); %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                [X, Y, V, objective_function_Y] = PSO_update(E_train_batch, parametersPSO, yalpha_on_batch, X, Y, V, objective_function_Y);
             else
                 error('full_or_partial_V_update type not known.')
             end

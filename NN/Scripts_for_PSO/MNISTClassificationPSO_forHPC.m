@@ -1,8 +1,10 @@
 % MNIST Classification with PSO for HPC
 %
-% This function 
+% This script implements the framework for training a neural network 
+% classifier (shallow NN, deep NN, CNN) for MNIST classification using PSO.
 %
 
+%%
 function MNISTClassificationPSO_forHPC(numberofworkers)
 
 
@@ -126,7 +128,7 @@ parametersInitialization = containers.Map({'X0mean', 'X0std', 'V0mean', 'V0std'}
                                           {  X0mean,   X0std,   V0mean,   V0std});
 
 
-%% PSO or PSO Algorithm
+%% PSO Algorithm
 
 parfor (worker = 1:size(parameters,1), numberofworkers)
     

@@ -1,3 +1,17 @@
+% This function implements the plotting routine for performance (testing 
+% accuracy and training accuracy) plots
+% 
+% 
+% plot_training_testing_accuracy(performance_tracking)
+% 
+% input:    performance_tracking = tensor with saved performance measures
+%               - training accuracy = performance_tracking(1,:,:)
+%               - testing accuracy  = performance_tracking(2,:,:)
+%               - testing loss      = performance_tracking(3,:,:)
+%           
+% output:   plot
+%
+
 function plot_training_testing_accuracy(performance_tracking)
 
 [~, epochs, batch_size_E_batches] = size(performance_tracking); epochs = epochs-1;

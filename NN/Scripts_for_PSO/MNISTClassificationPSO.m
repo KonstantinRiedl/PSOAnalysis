@@ -46,11 +46,11 @@ NN_architecture = containers.Map({'NNtype', 'architecture', 'neurons', 'd'},...
 %% Parameters of PSO Algorithm
 
 % number of epochs
-epochs = 50;
+epochs = 80;
 
 % discrete time size
 dt = 0.1;
- 
+
 % number of particles
 N = 100;
 % particle reduction strategy (for N)

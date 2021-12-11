@@ -3,33 +3,35 @@
 % This function performs the position updates of one iteration of PSO.
 % 
 % 
-% [X, Y, V] = PSO_update(E, parametersPSO, y_alpha, X, Y, V)
+% [X, Y, V, objective_function_Y] = PSO_update(E, parametersPSO, y_alpha, X, Y, V, objective_function_Y)
 % 
-% input:    E                  = objective function E (as anonymous function)
-%           parametersPSO      = suitable parameters for PSO
-%                              = [T, dt, N, m, kappa, gamma, lambda1, lambda2, anisotropic1, sigma1, anisotropic2, sigma2, alpha, beta]
-%               - T            = time horizon
-%               - dt           = time step size
-%               - N            = number of particles
-%               - m            = inertia weight
-%               - kappa        = 
-%               - gamma        = friction coefficient
-%               - lambda1      = drift towards in-time best parameter
-%               - lambda2      = drift towards global and in-time best parameter
-%               - anisotropic1 = noise 1 type
-%               - sigma1       = noise parameter 1
-%               - anisotropic2 = noise 2 type
-%               - sigma2       = noise parameter 2
-%               - alpha        = weight/temperature parameter
-%               - beta         = regularization parameter for sigmoid
-%           y_alpha            = global and in-time best position y_alpha
-%           X                  = former positions of the particles
-%           Y                  = former best positions of the particles
-%           V                  = former velocities of the particles
+% input:    E                    = objective function E (as anonymous function)
+%           parametersPSO        = suitable parameters for PSO
+%                                = [T, dt, N, m, kappa, gamma, lambda1, lambda2, anisotropic1, sigma1, anisotropic2, sigma2, alpha, beta]
+%               - T              = time horizon
+%               - dt             = time step size
+%               - N              = number of particles
+%               - m              = inertia weight
+%               - kappa          = scaling parameter (usually 1/dt)
+%               - gamma          = friction coefficient
+%               - lambda1        = drift towards in-time best parameter
+%               - lambda2        = drift towards global and in-time best parameter
+%               - anisotropic1   = noise 1 type
+%               - sigma1         = noise parameter 1
+%               - anisotropic2   = noise 2 type
+%               - sigma2         = noise parameter 2
+%               - alpha          = weight/temperature parameter
+%               - beta           = regularization parameter for sigmoid
+%           y_alpha              = global and in-time best position y_alpha
+%           X                    = former positions of the particles
+%           Y                    = former best positions of the particles
+%           V                    = former velocities of the particles
+%           objective_function_Y = former objective values of best positions
 %           
-% output:   X                  = positions of the particles afterwards
-%           Y                  = best positions of the particles afterwards
-%           V                  = velocities of the particles afterwards
+% output:   X                    = positions of the particles afterwards
+%           Y                    = best positions of the particles afterwards
+%           V                    = velocities of the particles afterwards
+%           objective_function_Y = objective values of best positions afterwards
 %
 
 function [X, Y, V, objective_function_Y] = PSO_update(E, parametersPSO, y_alpha, X, Y, V, objective_function_Y)

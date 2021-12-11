@@ -11,7 +11,7 @@ Date 12.12.2021
 
 ## R e f e r e n c e
 
-### On the global convergence of particle swarm optimization methods
+### On the Global Convergence of Particle Swarm Optimization Methods
 
 https://arxiv.org/abs/2XXX.XXXXX
 
@@ -36,10 +36,12 @@ BenchmarkFunctions
 VarianceandEnergyBasedCBOAnalysis
 * analyses: convergence and parameter analyses of PSO
     * PSOParameters_PhaseTransition.m: Phase transition diagrams for parameter analysis
-    * DecayComparison_parameters.m: Comparison of the decay behavior of PSO for different values of a certain (choosable) parameter
+* results: folder to save numerical results
+    * plot_phasetransitiondiagram: plotting routine for phase diagrams
+    * PhaseTransitionDiagrams_msigma2: folder for phase transition diagrams for m and sigma2
 * PSO: code of PSO optimizer
     * compute_yalpha.m: computation of consensus point
-    * S_beta.m: tanh function to compare current with in-time best position
+    * S_beta.m: function to compare current with in-time best position
     * PSO_update: one PSO step
     * PSO.m: PSO optimizer
     * PSOmachinelearning.m: PSO optimizer for machine learning applications
@@ -55,6 +57,11 @@ NN: machine learning experiments with PSO as optimization method for training
 * data: data and function to load data
 * Scripts_for_PSO
     * MNISTClassificationPSO.m: script training the NN for MNIST with PSO
+* results/PSO: folder to save numerical results
+    * plot_training_testing_accuracy: plotting routine for performance plots
+    * CNN: folder for CNN results
+    * ShallowNN: folder for shallow NN results
+    * plot_loss_and_testing_accuracy_PSON100/1000: plotting routine for performance plots
 
 
 

@@ -13,14 +13,15 @@
 % theoretical value of y_alpha.
 % 
 % 
-% [x_alpha] = compute_valpha(E, alpha, X)
+% [y_alpha] = compute_yalpha(E, alpha, Y, objective_function_Y)
 % 
-% input:    E             = objective function E (as anonymous function)
-%           alpha         = weight/temperature parameter alpha
-%           Y             = positions y_i of particles used for computation
-%                           of the global and in-time best position y_alpha
+% input:    E                    = objective function E (as anonymous function)
+%           alpha                = weight/temperature parameter alpha
+%           Y                    = positions y_i of particles used for computation
+%                                  of the global and in-time best position y_alpha
+%           objective_function_Y = objective values of positions of particle
 %           
-% output:   y_alpha       = global and in-time best position
+% output:   y_alpha              = global and in-time best position
 %
 
 function [y_alpha] = compute_yalpha(E, alpha, Y, objective_function_Y)

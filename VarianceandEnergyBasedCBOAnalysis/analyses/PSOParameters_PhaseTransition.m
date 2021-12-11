@@ -167,13 +167,11 @@ save(filename, 'pt_diagram', 'd', 'objectivefunction', 'pt_diagram_x', 'pt_diagr
 
 %% Plotting
 
-imagesc(flipud(pt_diagram))
-colorbar
-xlabel(['$', pt_diagram_x, '$'],'interpreter','latex')
-xticks(1:length(pt_diagram_x_values))
-xticklabels(pt_diagram_x_values)
-ylabel(['$', pt_diagram_y, '$'],'interpreter','latex')
-yticks(1:length(pt_diagram_y_values))
-yticklabels(flipud(pt_diagram_y_values')')
-
-
+% imagesc(flipud(pt_diagram))
+% colorbar
+% xlabel(['$', pt_diagram_x, '$'],'interpreter','latex')
+% xticks(1:length(pt_diagram_x_values))
+% xticklabels(pt_diagram_x_values)
+% ylabel(['$', pt_diagram_y, '$'],'interpreter','latex')
+% yticks(1:length(pt_diagram_y_values))
+% yticklabels(flipud(pt_diagram_y_values')')

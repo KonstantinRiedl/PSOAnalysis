@@ -13,14 +13,16 @@
 % encodes the update rule Y_new = X if E(X)<E(Y_old) and Y_old else.
 % 
 % 
-% [s_betaXY] = S_beta(E, beta, X, Y)
+% [s_betaXY] = S_beta(E, beta, X, Y, objective_function_X, objective_function_Y)
 % 
-% input:    E             = objective function E (as anonymous function)
-%           beta          = weight/temperature parameter alpha
-%           X             = current positions x_i of particles
-%           Y             = in-time best positions y_i of particles
+% input:    E                    = objective function E (as anonymous function)
+%           beta                 = weight/temperature parameter alpha
+%           X                    = current positions x_i of particles
+%           Y                    = in-time best positions y_i of particles
+%           objective_function_X = objective values of positions X
+%           objective_function_Y = objective values of positions Y
 %           
-% output:   s_betaXY      = approximated indicator 
+% output:   s_betaXY             = approximated indicator 
 %
 
 function [s_betaXY] = S_beta(E, beta, X, Y, objective_function_X, objective_function_Y)
