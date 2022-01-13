@@ -107,6 +107,11 @@ if memory
     end
 else
     Y = X;
+    if nargin == 6
+        objective_function_Y = E(X);
+    else
+        objective_function_Y = nan;
+    end
 end
 
 
