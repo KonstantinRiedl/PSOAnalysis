@@ -33,7 +33,7 @@ BenchmarkFunctions
 * objective_function.m: objective function generator
 * ObjectiveFunctionPlot1/2d.m: plotting routine for objective function
 
-VarianceandEnergyBasedCBOAnalysis
+VarianceandEnergyBasedPSOAnalysis
 * analyses: convergence and parameter analyses of PSO
     * PSOParameters_PhaseTransition.m: Phase transition diagrams for parameter analysis
 * results: folder to save numerical results
