@@ -72,6 +72,6 @@ NN: machine learning experiments with PSO as optimization method for training
       title = {On the global convergence of particle swarm optimization methods},
      author = {Hui Huang and Jinniao Qiu and Konstantin Riedl},
        year = {20XX},
-    journal = {arXiv preprint arXiv:2XXX.XXXXX},
+    journal = {arXiv preprint arXiv:2201.12460},
 }
 ```
