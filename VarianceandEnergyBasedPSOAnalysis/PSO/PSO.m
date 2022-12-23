@@ -6,6 +6,7 @@
 % [xstar_approx] = PSO(E, parametersPSO, X0, V0)
 % 
 % input:    E                  = objective function E (as anonymous function)
+%           grad_E             = gradient of objective function E (as anonymous function) <- currently not used
 %           parametersPSO      = suitable parameters for PSO
 %                              = [T, dt, N, m, kappa, gamma, lambda1, lambda2, sigma1, anisotropic, sigma2, alpha, beta]
 %               - T            = time horizon
@@ -28,13 +29,13 @@
 % output:   ystar_approx       = approximation to ystar
 %
 
-function [ystar_approx] = PSO(E, parametersPSO, X0, V0)
+function [ystar_approx] = PSO(E, grad_E, parametersPSO, X0, V0)
 
 % get parameters
 T = parametersPSO('T');
 dt = parametersPSO('dt');
-anisotropic1 = parametersPSO('anisotropic1');
-anisotropic2 = parametersPSO('anisotropic2');
+%anisotropic1 = parametersPSO('anisotropic1');
+%anisotropic2 = parametersPSO('anisotropic2');
 alpha = parametersPSO('alpha');
 
 % initialization
@@ -42,7 +43,7 @@ X = X0;
 Y = X;
 V = V0;
 
-% PSO
+% % PSO
 % if anisotropic1 && anisotropic2
 % 	disp('PSO with ANisotropic diffusion used.')
 % elseif anisotropic1 && ~anisotropic2
@@ -59,7 +60,7 @@ for k = 1:T/dt
     y_alpha = compute_yalpha(E, alpha, Y);
     
     % position updates of one iteration of PSO
-    [X, Y, V] = PSO_update(E, parametersPSO, y_alpha, X, Y, V);
+    [X, Y, V] = PSO_update(E, grad_E, parametersPSO, y_alpha, X, Y, V);
     
 end
 

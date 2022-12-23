@@ -8,7 +8,7 @@
 %
 % where w_alpha(y) = exp(-alpha*E(y)).
 % For (numerical) stability reasons, we modify the definition of w_alpha(y)
-% to w_alpha(y) = exp(-alpha*E(y)-Emin), where Emin is the minimal energy
+% to w_alpha(y) = exp(-alpha*(E(y)-Emin)), where Emin is the minimal energy
 % among the particles. We note, that this does not influence the
 % theoretical value of y_alpha.
 % 

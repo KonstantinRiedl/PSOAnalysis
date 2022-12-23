@@ -20,7 +20,7 @@ image_size = [28, 28]; % the standard size of MNIST is [28, 28]
 %% Neural Network Architecture
 
 % type of the neural network
-NNtype = 'CNN'; % fully_connected or CNN
+NNtype = 'fully_connected'; % fully_connected or CNN
 
 % architecture of the neural network
 if strcmp(NNtype, 'fully_connected')
@@ -46,7 +46,7 @@ NN_architecture = containers.Map({'NNtype', 'architecture', 'neurons', 'd'},...
 %% Parameters of PSO Algorithm
 
 % number of epochs
-epochs = 80;
+epochs = 100;
 
 % discrete time size
 dt = 0.1;
@@ -68,7 +68,7 @@ kappa = 1/dt;
 gamma = 1-m;
 
 % memory
-memory = 0; % 0 or 1
+memory = 1; % 0 or 1
 % lambda1, sigma1, kappa and beta have no effect for memory=0.
 
 % lambda1 (drift towards in-time best parameter)

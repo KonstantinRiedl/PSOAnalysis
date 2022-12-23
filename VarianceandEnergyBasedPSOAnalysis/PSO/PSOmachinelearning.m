@@ -125,22 +125,22 @@ for epoch = 1:epochs
             objective_function_Y_batch = objective_function_Y(:,indices_p_b);
             V_particle_batch = V(:,indices_p_b);
             
-            % % CBO iteration
+            % % PSO iteration
             % compute current consensus point yalpha
             yalpha_on_batch = compute_yalpha(E_train_batch, parametersPSO('alpha'), Y_particle_batch, objective_function_Y_batch);
 
             % position updates of one iteration of PSO
             if strcmp(full_or_partial_XYV_update, 'partial')
-                [X_particle_batch, Y_particle_batch, V_particle_batch, objective_function_Y_batch] = PSO_update(E_train_batch, parametersPSO, yalpha_on_batch, X_particle_batch, Y_particle_batch, V_particle_batch, objective_function_Y_batch);
+                [X_particle_batch, Y_particle_batch, V_particle_batch, objective_function_Y_batch] = PSO_update(E_train_batch, @(x) nan, parametersPSO, yalpha_on_batch, X_particle_batch, Y_particle_batch, V_particle_batch, objective_function_Y_batch);
                 X(:,indices_p_b) = X_particle_batch;
                 Y(:,indices_p_b) = Y_particle_batch;
                 objective_function_Y(:,indices_p_b) = objective_function_Y_batch;
                 V(:,indices_p_b) = V_particle_batch;
                 clear permutation
             elseif strcmp(full_or_partial_XYV_update, 'full')
-                [X, Y, V, objective_function_Y] = PSO_update(E_train_batch, parametersPSO, yalpha_on_batch, X, Y, V, objective_function_Y);
+                [X, Y, V, objective_function_Y] = PSO_update(E_train_batch, @(x) nan, parametersPSO, yalpha_on_batch, X, Y, V, objective_function_Y);
             else
-                error('full_or_partial_V_update type not known.')
+                error('full_or_partial_XYV_update type not known.')
             end
             
             % random Brownian motion if yalpha_on_batch is not changing

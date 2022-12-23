@@ -7,19 +7,28 @@
 % data to be visualized
 % 
 % 
-% plot_loss_and_testing_accuracy_PSON100()
+% plot_loss_and_testing_accuracy_PSON()
 %           
 % output:   plot
 %
 
-function plot_loss_and_testing_accuracy_PSON100()
+function plot_loss_and_testing_accuracy_PSO()
 
 number_of_architectures = 2;
 number_of_parametersettings = 3; % needs to be consistent with the number of loaded settings
 
-parameter_type = 'different_m'; % different_m or different_memory
+parameter_type = 'different_memory'; % different_m or different_memory
+N_ = 'N_100'; % N_100, N_1000
+testing_or_training_accuracy = 'testing'; % training, testing
 
-epochs_plot = 80;
+if strcmp(N_, 'N_100')
+    epochs_plot = 100;
+elseif strcmp(N_, 'N_1000')
+    epochs_plot = 10;
+else
+    error('epochs_plot has to be specified manually')
+end
+
 batches_per_epoch = 1; % needs to be a common divisor (2,5,10) of the individual batches_per_epoch if any
 
 performance_tracking_all = nan(number_of_architectures,number_of_parametersettings,3,epochs_plot+1,batches_per_epoch);
@@ -27,48 +36,48 @@ performance_tracking_all = nan(number_of_architectures,number_of_parametersettin
 if strcmp(parameter_type, 'different_m')
     
     % load shallow NN data
-    load('CBOandPSO/NN/results/PSO/ShallowNN/PSOMNIST_N_100_memory_1_lambda1_0div10_m_4div10_100epochs.mat')
+    load([main_folder(),'/Example_NN/results/PSO/ShallowNN/PSOMNIST_', N_, '_memory_1_lambda1_0div10_m_4div10_', num2str(epochs_plot), 'epochs_1.mat'])
     performance_tracking = performance_tracking(:,:,linspace(size(performance_tracking,3)/batches_per_epoch,size(performance_tracking,3),batches_per_epoch));
     performance_tracking_all(2,1,:,1:(epochs+1),:) = performance_tracking;
-    load('CBOandPSO/NN/results/PSO/ShallowNN/PSOMNIST_N_100_memory_1_lambda1_0div10_m_2div10_100epochs.mat')
+    load([main_folder(),'/Example_NN/results/PSO/ShallowNN/PSOMNIST_', N_, '_memory_1_lambda1_0div10_m_2div10_', num2str(epochs_plot), 'epochs_1.mat'])
     performance_tracking = performance_tracking(:,:,linspace(size(performance_tracking,3)/batches_per_epoch,size(performance_tracking,3),batches_per_epoch));
     performance_tracking_all(2,2,:,1:(epochs+1),:) = performance_tracking;
-    load('CBOandPSO/NN/results/PSO/ShallowNN/PSOMNIST_N_100_memory_1_lambda1_0div10_m_1div10_100epochs.mat')
+    load([main_folder(),'/Example_NN/results/PSO/ShallowNN/PSOMNIST_', N_, '_memory_1_lambda1_0div10_m_1div10_', num2str(epochs_plot), 'epochs_1.mat'])
     performance_tracking = performance_tracking(:,:,linspace(size(performance_tracking,3)/batches_per_epoch,size(performance_tracking,3),batches_per_epoch));
     performance_tracking_all(2,3,:,1:(epochs+1),:) = performance_tracking;
     
     % load CNN data
-    load('CBOandPSO/NN/results/PSO/CNN/PSOMNIST_N_100_memory_1_lambda1_0div10_m_4div10_100epochs.mat')
+    load([main_folder(),'/Example_NN/results/PSO/CNN/PSOMNIST_', N_, '_memory_1_lambda1_0div10_m_4div10_', num2str(epochs_plot), 'epochs_1.mat'])
     performance_tracking = performance_tracking(:,:,linspace(size(performance_tracking,3)/batches_per_epoch,size(performance_tracking,3),batches_per_epoch));
     performance_tracking_all(1,1,:,1:(epochs+1),:) = performance_tracking;
-    load('CBOandPSO/NN/results/PSO/CNN/PSOMNIST_N_100_memory_1_lambda1_0div10_m_2div10_100epochs.mat')
+    load([main_folder(),'/Example_NN/results/PSO/CNN/PSOMNIST_', N_, '_memory_1_lambda1_0div10_m_2div10_', num2str(epochs_plot), 'epochs_1.mat'])
     performance_tracking = performance_tracking(:,:,linspace(size(performance_tracking,3)/batches_per_epoch,size(performance_tracking,3),batches_per_epoch));
     performance_tracking_all(1,2,:,1:(epochs+1),:) = performance_tracking;
-    load('CBOandPSO/NN/results/PSO/CNN/PSOMNIST_N_100_memory_1_lambda1_0div10_m_1div10_100epochs.mat')
+    load([main_folder(),'/Example_NN/results/PSO/CNN/PSOMNIST_', N_, '_memory_1_lambda1_0div10_m_1div10_', num2str(epochs_plot), 'epochs_1.mat'])
     performance_tracking = performance_tracking(:,:,linspace(size(performance_tracking,3)/batches_per_epoch,size(performance_tracking,3),batches_per_epoch));
     performance_tracking_all(1,3,:,1:(epochs+1),:) = performance_tracking;
     
 elseif strcmp(parameter_type, 'different_memory')
     
     % load shallow NN data
-    load('CBOandPSO/NN/results/PSO/ShallowNN/PSOMNIST_N_100_memory_1_lambda1_4div10_m_2div10_100epochs.mat')
+    load([main_folder(),'/Example_NN/results/PSO/ShallowNN/PSOMNIST_', N_, '_memory_1_lambda1_4div10_m_2div10_', num2str(epochs_plot), 'epochs_1.mat'])
     performance_tracking = performance_tracking(:,:,linspace(size(performance_tracking,3)/batches_per_epoch,size(performance_tracking,3),batches_per_epoch));
     performance_tracking_all(2,1,:,1:(epochs+1),:) = performance_tracking;
-    load('CBOandPSO/NN/results/PSO/ShallowNN/PSOMNIST_N_100_memory_1_lambda1_0div10_m_2div10_100epochs.mat')
+    load([main_folder(),'/Example_NN/results/PSO/ShallowNN/PSOMNIST_', N_, '_memory_1_lambda1_0div10_m_2div10_', num2str(epochs_plot), 'epochs_1.mat'])
     performance_tracking = performance_tracking(:,:,linspace(size(performance_tracking,3)/batches_per_epoch,size(performance_tracking,3),batches_per_epoch));
     performance_tracking_all(2,2,:,1:(epochs+1),:) = performance_tracking;
-    load('CBOandPSO/NN/results/PSO/ShallowNN/PSOMNIST_N_100_memory_0_lambda1_0div10_m_2div10_100epochs.mat')
+    load([main_folder(),'/Example_NN/results/PSO/ShallowNN/PSOMNIST_', N_, '_memory_0_lambda1_0div10_m_2div10_', num2str(epochs_plot), 'epochs_1.mat'])
     performance_tracking = performance_tracking(:,:,linspace(size(performance_tracking,3)/batches_per_epoch,size(performance_tracking,3),batches_per_epoch));
     performance_tracking_all(2,3,:,1:(epochs+1),:) = performance_tracking;
     
     % load CNN data
-    load('CBOandPSO/NN/results/PSO/CNN/PSOMNIST_N_100_memory_1_lambda1_4div10_m_2div10_100epochs.mat')
+    load([main_folder(),'/Example_NN/results/PSO/CNN/PSOMNIST_', N_, '_memory_1_lambda1_4div10_m_2div10_', num2str(epochs_plot), 'epochs_1.mat'])
     performance_tracking = performance_tracking(:,:,linspace(size(performance_tracking,3)/batches_per_epoch,size(performance_tracking,3),batches_per_epoch));
     performance_tracking_all(1,1,:,1:(epochs+1),:) = performance_tracking;
-    load('CBOandPSO/NN/results/PSO/CNN/PSOMNIST_N_100_memory_1_lambda1_0div10_m_2div10_100epochs.mat')
+    load([main_folder(),'/Example_NN/results/PSO/CNN/PSOMNIST_', N_, '_memory_1_lambda1_0div10_m_2div10_', num2str(epochs_plot), 'epochs_1.mat'])
     performance_tracking = performance_tracking(:,:,linspace(size(performance_tracking,3)/batches_per_epoch,size(performance_tracking,3),batches_per_epoch));
     performance_tracking_all(1,2,:,1:(epochs+1),:) = performance_tracking;
-    load('CBOandPSO/NN/results/PSO/CNN/PSOMNIST_N_100_memory_0_lambda1_0div10_m_2div10_80epochs.mat')
+    load([main_folder(),'/Example_NN/results/PSO/CNN/PSOMNIST_', N_, '_memory_0_lambda1_0div10_m_2div10_', num2str(epochs_plot), 'epochs_1.mat'])
     performance_tracking = performance_tracking(:,:,linspace(size(performance_tracking,3)/batches_per_epoch,size(performance_tracking,3),batches_per_epoch));
     performance_tracking_all(1,3,:,1:(epochs+1),:) = performance_tracking;
 
@@ -122,12 +131,23 @@ for k = 1:number_of_architectures
         end
 
         yyaxis right
-        % plot testing accuracy
-        kk((k-1)*3+1) = plot(epoch_batch_discretization, performance_tracking_k(2,:), 'LineWidth', 2, 'LineStyle', line_style, 'Color', [accuracy_color, line_opacity], 'Marker', 'none'); hold on
+        % plot testing or training accuracy
+        if strcmp(testing_or_training_accuracy, 'testing')
+            testing_or_training_index = 2;
+        elseif strcmp(testing_or_training_accuracy, 'training')
+            testing_or_training_index = 1;
+        else
+            error('testing_or_training_accuracy not known.')
+        end
+        kk((k-1)*3+1) = plot(epoch_batch_discretization, performance_tracking_k(testing_or_training_index,:), 'LineWidth', 2, 'LineStyle', line_style, 'Color', [accuracy_color, line_opacity], 'Marker', 'none'); hold on
         %plot(epoch_discretization, performance_tracking_epoch(1,:), 'LineStyle', '-', 'LineWidth', 2, 'Color', co(1,:)); hold on
 
         xlabel('number of epochs','Interpreter','latex','FontSize',15)
-        ylabel('testing accuracy','Interpreter','latex','FontSize',15)
+        if strcmp(testing_or_training_accuracy, 'testing')
+            ylabel('testing accuracy','Interpreter','latex','FontSize',15)
+        elseif strcmp(testing_or_training_accuracy, 'training')
+            ylabel('training accuracy','Interpreter','latex','FontSize',15)
+        end
         ylim([0.6 1])
         yticks(0:0.04:1)
         if epochs_plot<=20

@@ -3,9 +3,9 @@ Numerical analysis of Particle Swarm Optimization
 
 PSO is a multi-agent metaheuristic derivative-free optimization method capable of globally minimizing nonconvex and nonsmooth functions in high dimensions. It was initially introduced by Kennedy and Eberhart in the 1990s.
 
-Version 1.0
+Version 1.1
 
-Date 12.12.2021
+Date 23.12.2022
 
 ------
 
@@ -17,9 +17,9 @@ https://arxiv.org/abs/2201.12460
 
 by
 
-- Hui &nbsp; H u a n g &nbsp; (University of Calgary), 
+- Hui &nbsp; H u a n g &nbsp; (University of Graz), 
 - Jinniao &nbsp; Q i u &nbsp; (University of Calgary),
-- Konstantin &nbsp; R i e d l &nbsp; (Technical University of Munich)
+- Konstantin &nbsp; R i e d l &nbsp; (Technical University of Munich & Munich Center for Machine Learning)
 
 ------
 
@@ -33,8 +33,9 @@ BenchmarkFunctions
 * objective_function.m: objective function generator
 * ObjectiveFunctionPlot1/2d.m: plotting routine for objective function
 
-VarianceandEnergyBasedPSOAnalysis
+VarianceandEnergyBasedCBOAnalysis
 * analyses: convergence and parameter analyses of PSO
+    * PSONumericalExample.m: testing script
     * PSOParameters_PhaseTransition.m: Phase transition diagrams for parameter analysis
 * results: folder to save numerical results
     * plot_phasetransitiondiagram: plotting routine for phase diagrams
@@ -63,7 +64,7 @@ NN: machine learning experiments with PSO as optimization method for training
     * ShallowNN: folder for shallow NN results
     * plot_loss_and_testing_accuracy_PSON100/1000: plotting routine for performance plots
 
-
+------
 
 ## C i t a  t i o n
 
@@ -71,7 +72,7 @@ NN: machine learning experiments with PSO as optimization method for training
 @article{PSOConvergenceHuangQiuRiedl,
       title = {On the global convergence of particle swarm optimization methods},
      author = {Hui Huang and Jinniao Qiu and Konstantin Riedl},
-       year = {20XX},
+       year = {2022},
     journal = {arXiv preprint arXiv:2201.12460},
 }
 ```

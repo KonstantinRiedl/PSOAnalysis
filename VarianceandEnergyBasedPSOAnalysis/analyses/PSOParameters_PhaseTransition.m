@@ -18,9 +18,9 @@ numberofworkers = 4; %25;
 d = 20;
 
 % % energy function E
-% (E is a function mapping columnwise from R^{d\times N} to R)
+% (E is a function mapping columnwise from R^{d\times N} to R^N)
 objectivefunction = 'Rastrigin';
-[E, parametersE, ~, ~] = objective_function(objectivefunction, d, 'PSO');
+[E, grad_E, parametersE, ~, ~] = objective_function(objectivefunction, d, 'PSO');
 
 % global minimizer
 vstar = zeros(d,1); %fminbnd(E,xrange_plot(1),xrange_plot(2));
@@ -142,7 +142,7 @@ for i = 1:length(pt_diagram_x_values)
             V = V0;
             
             % PSO
-            [xstar_app] = PSO(E, parametersPSO, X0, V0);
+            [xstar_app] = PSO(E, grad_E, parametersPSO, X0, V0);
 
             % count successful runs
             if E(xstar_app)<0.8
@@ -160,7 +160,7 @@ pt_diagram = reshape(mean(pt_diagram,1), [length(pt_diagram_y_values), length(pt
 
 %%
 
-filename = ['CBOandPSO/EnergyBasedPSOAnalysis/results/', 'memory', num2str(memory), 'phasediagram_', pt_diagram_x, pt_diagram_y, '_lambda1_', num2str(lambda1*10), 'div10_N_', num2str(N)];
+filename = [main_folder(),'/EnergyBasedPSOAnalysis/results/', 'memory', num2str(memory), 'phasediagram_', pt_diagram_x, pt_diagram_y, '_lambda1_', num2str(lambda1*10), 'div10_N_', num2str(N)];
 
 save(filename, 'pt_diagram', 'd', 'objectivefunction', 'pt_diagram_x', 'pt_diagram_y', 'pt_diagram_x_values', 'pt_diagram_y_values', 'number_runs', 'T', 'dt', 'N', 'm', 'kappa', 'gamma', 'memory', 'lambda1', 'lambda2', 'anisotropic1', 'sigma1', 'anisotropic2', 'sigma2', 'alpha', 'beta', 'X0mean', 'X0std', 'V0mean', 'V0std')
 

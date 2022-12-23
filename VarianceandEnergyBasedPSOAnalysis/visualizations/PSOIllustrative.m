@@ -32,9 +32,9 @@ savevideo = 0;
 d = 2;
 
 % % energy function E
-% (E is a function mapping columnwise from R^{d\times N} to R)
+% (E is a function mapping columnwise from R^{d\times N} to R^N)
 objectivefunction = 'Rastrigin';
-[E, parametersE, ~, ~] = objective_function(objectivefunction, d, 'PSO');
+[E, grad_E, parametersE, ~, ~] = objective_function(objectivefunction, d, 'PSO');
 
 % range of x (and x and y for plotting)
 xrange_plot = parametersE(:,1)';
@@ -211,7 +211,7 @@ for k = 1:T/dt
     y_alpha = compute_yalpha(E, alpha, Y);
     
     % position updates of one iteration of PSO
-    [X, Y, V] = PSO_update(E, parametersPSO, y_alpha, X, Y, V);
+    [X, Y, V] = PSO_update(E, grad_E, parametersPSO, y_alpha, X, Y, V);
     
     % % Visualization of the way PSO optimizes non-convex functions
     % remove all old plotting objects

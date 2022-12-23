@@ -18,7 +18,7 @@ image_size = [28, 28]; % the standard size of MNIST is [28, 28]
 %% Neural Network Architecture
 
 % type of the neural network
-NNtype = 'CNN'; % fully_connected or CNN
+NNtype = 'fully_connected'; % fully_connected or CNN
 
 % architecture of the neural network
 if strcmp(NNtype, 'fully_connected')
@@ -56,9 +56,6 @@ particle_reduction = 0;
 
 
 % % PSO parameters
-% parameter cooling strategy (for sigma and alpha)
-parameter_cooling = 1;
-
 
 %
 kappa = 1/dt;
@@ -71,7 +68,8 @@ lambda2 = 1;
 anisotropic1 = 1;
 % type of diffusion for noise term 2
 anisotropic2 = 1;
-
+% parameter cooling strategy (for sigma and alpha)
+parameter_cooling = 1;
 
 % beta (regularization parameter for sigmoid)
 beta = -1; % 'inf' or -1 for using Heaviside function instead of S_beta
@@ -110,10 +108,11 @@ parametersbatch = containers.Map({'batch_size_N', 'batch_size_E', 'full_or_parti
 % beta: regularization parameter for sigmoid ('inf' or -1 for using Heaviside function instead of S_beta)
 
 %               m, memory, lambda1,    sigma2, alpha
-parameters = [0.1,      1,       0, sqrt(0.4),    50;
+parameters = [0.2,      0,       0, sqrt(0.4),    50;
               0.2,      1,       0, sqrt(0.4),    50;
-              0.4,      1,       0, sqrt(0.4),    50;
-              0.2,      1,     0.4, sqrt(0.4),    50];
+              0.2,      1,     0.4, sqrt(0.4),    50;
+              0.1,      1,       0, sqrt(0.4),    50;
+              0.4,      1,       0, sqrt(0.4),    50;];
 
 
 %% Initialization

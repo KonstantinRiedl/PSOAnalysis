@@ -3,9 +3,10 @@
 % This function performs the position updates of one iteration of PSO.
 % 
 % 
-% [X, Y, V, objective_function_Y] = PSO_update(E, parametersPSO, y_alpha, X, Y, V, objective_function_Y)
+% [X, Y, V, objective_function_Y] = PSO_update(E, grad_E, parametersPSO, y_alpha, X, Y, V, objective_function_Y)
 % 
 % input:    E                    = objective function E (as anonymous function)
+%           grad_E               = gradient of objective function E (as anonymous function) <- currently not used
 %           parametersPSO        = suitable parameters for PSO
 %                                = [T, dt, N, m, kappa, gamma, lambda1, lambda2, anisotropic1, sigma1, anisotropic2, sigma2, alpha, beta]
 %               - T              = time horizon
@@ -34,7 +35,7 @@
 %           objective_function_Y = objective values of best positions afterwards
 %
 
-function [X, Y, V, objective_function_Y] = PSO_update(E, parametersPSO, y_alpha, X, Y, V, objective_function_Y)
+function [X, Y, V, objective_function_Y] = PSO_update(E, grad_E, parametersPSO, y_alpha, X, Y, V, objective_function_Y)
 
 % get parameters
 d = size(X,1);
@@ -87,7 +88,7 @@ X = X + V*dt;
 if memory
     % % update of the in-time best particle positions (for each particle)
     if strcmp(beta, 'inf') || beta==-1
-        if nargin == 7
+        if nargin == 8
             objective_function_X = E(X);
             Y = Y + (X-Y).*double((objective_function_Y-objective_function_X)>0);
             objective_function_Y = min(objective_function_Y, objective_function_X);
@@ -96,7 +97,7 @@ if memory
             objective_function_Y = nan;
         end
     else
-        if nargin == 7
+        if nargin == 8
             objective_function_X = E(X);
             Y = Y + kappa*(X-Y).*S_beta(E, beta, X, Y, objective_function_X, objective_function_Y)*dt;
             objective_function_Y = E(Y);
@@ -107,7 +108,7 @@ if memory
     end
 else
     Y = X;
-    if nargin == 6
+    if nargin == 7
         objective_function_Y = E(X);
     else
         objective_function_Y = nan;

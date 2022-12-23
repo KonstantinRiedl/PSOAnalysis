@@ -12,7 +12,7 @@ co = set_color();
 %% Settings for Easy Handling and Notes
 % 
 % save plot
-pdfexport = 1;
+pdfexport = 0;
 
 f = figure('Position', [1200 800 600 240]);
 
@@ -23,9 +23,9 @@ f = figure('Position', [1200 800 600 240]);
 d = 2;
 
 % % energy function E
-% (E is a function mapping columnwise from R^{d\times N} to R)
+% (E is a function mapping columnwise from R^{d\times N} to R^N)
 objectivefunction = 'Rastrigin';
-[E, ~, ~, ~] = objective_function(objectivefunction, d, 'PSO');
+[E, grad_E, ~, ~, ~] = objective_function(objectivefunction, d, 'PSO');
 
 
 %% Parameters of CBO Algorithm
@@ -100,7 +100,7 @@ X_history = [X_history0, X_history1, X_history2, X_history3, X_history4, X_histo
 
 
 %% Plotting
-% % v_star and v_alpha
+% % x_star and v_alpha
 % x_star
 x_star = [0; 0];
 p_x_star = plot(x_star(1), x_star(2), '*', 'MarkerSize', 12, 'LineWidth', 1.8, "color", co(5,:)); hold on
@@ -204,8 +204,8 @@ ax.FontSize = 15;
 %% Save Image
 if pdfexport
     if anisotropic1
-        print(f,['CBOandPSO/EnergyBasedPSOAnalysis/images_videos/PSODynamicsIllustration_anisotropic'],'-dpdf');
+        print(f,[main_folder(),'/EnergyBasedPSOAnalysis/images_videos/PSODynamicsIllustration_anisotropic'],'-dpdf');
     else
-        print(f,['CBOandPSO/EnergyBasedPSOAnalysis/images_videos/PSODynamicsIllustration_isotropic'],'-dpdf');
+        print(f,[main_folder(),'/EnergyBasedPSOAnalysis/images_videos/PSODynamicsIllustration_isotropic'],'-dpdf');
     end
 end
