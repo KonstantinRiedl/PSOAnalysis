@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Huang"
+  given-names: "Hui"
+- family-names: "Qiu"
+  given-names: "Jinniao"
+- family-names: "Riedl"
+  given-names: "Konstantin"
+  orcid: "https://orcid.org/0000-0001-6646-0585"
+title: "PSOAnalysis"
+version: 1.2
+date-released: 2023-05-31
+url: "https://github.com/KonstantinRiedl/PSOAnalysis"
+preferred-citation:
+  type: article
+  authors:
+  - family-names: "Huang"
+    given-names: "Hui"
+  - family-names: "Qiu"
+    given-names: "Jinniao"
+  - family-names: "Riedl"
+    given-names: "Konstantin"
+    orcid: "https://orcid.org/0000-0001-6646-0585"
+  doi: "10.1007/s00245-023-09983-3"
+  journal: "Appl Math Optim"
+  month: 5
+  end: 30 # Last page number
+  title: "On the Global Convergence of Particle Swarm Optimization Methods"
+  issue: 88
+  volume: 2
+  year: 2023

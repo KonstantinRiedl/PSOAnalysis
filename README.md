@@ -3,9 +3,9 @@ Numerical analysis of Particle Swarm Optimization
 
 PSO is a multi-agent metaheuristic derivative-free optimization method capable of globally minimizing nonconvex and nonsmooth functions in high dimensions. It was initially introduced by Kennedy and Eberhart in the 1990s.
 
-Version 1.1
+Version 1.2
 
-Date 23.12.2022
+Date 31.05.2023
 
 ------
 
@@ -13,7 +13,7 @@ Date 23.12.2022
 
 ### On the Global Convergence of Particle Swarm Optimization Methods
 
-https://arxiv.org/abs/2201.12460
+https://link.springer.com/article/10.1007/s00245-023-09983-3
 
 by
 
@@ -69,10 +69,14 @@ NN: machine learning experiments with PSO as optimization method for training
 ## C i t a  t i o n
 
 ```bibtex
-@article{PSOConvergenceHuangQiuRiedl,
-      title = {On the global convergence of particle swarm optimization methods},
-     author = {Hui Huang and Jinniao Qiu and Konstantin Riedl},
-       year = {2022},
-    journal = {arXiv preprint arXiv:2201.12460},
+@article{huang2023global,
+  title={On the global convergence of particle swarm optimization methods},
+  author={Huang, Hui and Qiu, Jinniao and Riedl, Konstantin},
+  journal={Applied Mathematics \& Optimization},
+  volume={88},
+  number={2},
+  pages={30},
+  year={2023},
+  publisher={Springer}
 }
 ```
